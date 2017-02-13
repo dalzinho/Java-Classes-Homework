@@ -25,12 +25,22 @@ public class Classroom {
     return this.studentCount() == this.studentLimit;
   }
 
-  public void addStudent(Person student){
+  public String addStudent(Person student){
+    if (this.classFull() == false){
     students.add(student);
+    return "Student Added!";}
+    else {
+      return "Sorry, class full!";
+    }
   }
 
   public void teacherWobbly(){
+    
     students.clear();
+  }
+
+  public void removeStudent(Person student){
+    students.remove(student);
   }
 
 }

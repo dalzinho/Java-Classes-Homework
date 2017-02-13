@@ -32,12 +32,6 @@ public class ClassroomTest {
   }
 
   @Test
-  public void canAddStudents() {
-    room1.addStudent(john);
-    assertEquals(1, room1.studentCount());
-  }
-
-  @Test
   public void detectsClassFull(){
       room1.addStudent(john);
       room1.addStudent(paul);
@@ -49,6 +43,22 @@ public class ClassroomTest {
       assertEquals(true, room1.classFull());
   }
 
+  @Test
+  public void canAddStudents() {
+    room1.addStudent(john);
+    assertEquals(1, room1.studentCount());
+  }
+
+@Test
+public void rejectsStudentIfClassFull() {
+  room1.addStudent(john);
+  room1.addStudent(paul);
+  room1.addStudent(george);
+  room1.addStudent(ringo);
+  assertEquals("Sorry, class full!", room1.addStudent(keith));
+  assertEquals(4, room1.studentCount());
+}
+
   @Test 
   public void teacherCanThrowWobblyAndEjectAllStudents() {
     room1.addStudent(john);
@@ -57,6 +67,11 @@ public class ClassroomTest {
     assertEquals(0, room1.studentCount());
   }
 
-  // @Test
+  @Test
+  public void canRemoveStudent(){
+    room1.addStudent(ringo);
+    room1.removeStudent(ringo);
+    assertEquals(0, room1.studentCount());
+  }
 
 }
