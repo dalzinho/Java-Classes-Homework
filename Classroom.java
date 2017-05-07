@@ -22,7 +22,7 @@ public class Classroom {
   }
 
   public Boolean classFull(){
-    return this.studentCount() == this.studentLimit;
+    return this.studentCount() >= this.studentLimit;
   }
 
   public String addStudent(Person student){
